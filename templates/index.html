@@ -1,0 +1,73 @@
+{% extends 'base.html'%}
+
+{% block head %} 
+
+<title>Todo Application</title>
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class='contents ' >
+    
+      
+    <h1 align='center' style="text-align: center"><strong><u>TASK LIST</u></strong></h1>
+    <br><br>
+
+    {% if tasks|length < 1%}
+<div>
+    <h2 align='center' style="text-align: center">There is no task to do </h2>
+</div>
+<br><br>
+    {% else %}
+    <div id="TableContent">
+    <table align='center' >
+     
+
+        <tr>
+            <th style="background-color: aqua;">Task</th>
+            <th></th>
+            <th></th>
+            <th style="background-color: blue;">Added</th>
+            <th></th>
+            <th></th>
+            <th>Action</th>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            <td  id="taskName">{{task.content}}</td>
+            <td> &nbsp;&nbsp;&nbsp; </td>
+            <td> &nbsp;&nbsp;&nbsp; </td>
+            <td id="taskDate">{{task.date_created.date() }}</td>
+            <td> &nbsp;&nbsp;&nbsp; </td>
+            <td> &nbsp;&nbsp;&nbsp; </td>
+
+            <td>
+                <a href="/delete/{{task.id}}" id="delete">Delete</a>
+                <br><br><br>
+                <a href="/update/{{task.id}}" id="update" ,>Update</a>
+            </td>
+        </tr>
+      </div>
+        {% endfor%}
+        
+    </table>
+    {% endif%}
+
+    <br><br>
+   
+    <div class="form">
+    <form action='/' method='POST' align= "center">
+        <fieldset class="field">
+      <input type="text" name="content" id="content">
+      <br><br>
+      <input type="submit" value ="add task" class="TaskButton">   
+      </fieldset>
+    </form>
+
+    </div>
+   
+    <a id="aboutButton" href="/about">About</a>
+</div>
+{% endblock %}

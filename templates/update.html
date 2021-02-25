@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+
+{% block head %} 
+
+<title>Todo Application</title>
+
+{% endblock %}
+
+{% block body %}
+
+<div class='contents'>
+    <h1 align='center' style="text-align: center">Task list</h1>
+    <div class= "form">
+    <form action='/update/{{task.id}}' method='POST' align= "center">
+      <fieldset class="field">
+      <input type="text" name="content" id="content" value="{{task.content}}">
+      <br><br>
+      <input type="submit" value ="add task" class="TaskButton">  
+      </fieldset>
+    </form>
+</div>
+{% endblock %}
